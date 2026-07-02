@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CyberCore // Game Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#070912;
+    --bg2:#111827;
+
+    --cyan:#00f7ff;
+    --purple:#8a2eff;
+    --pink:#ff2e88;
+
+    --glass:rgba(255,255,255,.06);
+
+    --text:#ffffff;
+    --muted:#b8c2d0;
+
+}
+
+body{
+
+    font-family:Inter,sans-serif;
+    color:var(--text);
+
+    background:
+    radial-gradient(circle at top left,#162544 0%,transparent 40%),
+    radial-gradient(circle at bottom right,#2b004b 0%,transparent 45%),
+    linear-gradient(140deg,var(--bg),#05060d);
+
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Animated background */
+
+body::before{
+
+content:"";
+position:fixed;
+inset:0;
+
+background:
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+
+background-size:45px 45px;
+
+opacity:.35;
+
+animation:gridMove 25s linear infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes gridMove{
+
+0%{transform:translateY(0);}
+100%{transform:translateY(45px);}
+
+}
+
+/* HEADER */
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:28px 60px;
+
+}
+
+.logo{
+
+font-family:Orbitron,sans-serif;
+font-size:34px;
+font-weight:800;
+
+letter-spacing:3px;
+
+color:var(--cyan);
+
+text-shadow:
+0 0 10px var(--cyan),
+0 0 25px var(--cyan);
+
+}
+
+nav{
+
+display:flex;
+gap:20px;
+
+}
+
+nav a{
+
+text-decoration:none;
+color:white;
+
+padding:12px 22px;
+
+border:1px solid rgba(255,255,255,.1);
+
+border-radius:12px;
+
+transition:.35s;
+
+}
+
+nav a:hover{
+
+background:rgba(0,247,255,.15);
+
+border-color:var(--cyan);
+
+box-shadow:
+0 0 20px rgba(0,247,255,.4);
+
+transform:translateY(-3px);
+
+}
+
+/* MAIN CONTAINER */
+
+.game-arena{
+
+width:min(1180px,92%);
+
+margin:40px auto;
+
+padding:45px;
+
+border-radius:28px;
+
+background:rgba(10,14,28,.72);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 0 20px rgba(0,247,255,.45),
+
+0 0 50px rgba(138,46,255,.45),
+
+0 0 90px rgba(138,46,255,.25),
+
+inset 0 0 18px rgba(255,255,255,.05);
+
+animation:pulseGlow 3.5s ease-in-out infinite;
+
+}
+
+@keyframes pulseGlow{
+
+50%{
+
+box-shadow:
+
+0 0 35px rgba(0,247,255,.75),
+
+0 0 70px rgba(138,46,255,.65),
+
+0 0 120px rgba(255,46,136,.3),
+
+inset 0 0 18px rgba(255,255,255,.08);
+
+}
+
+}
+
+/* HERO */
+
+.hero{
+
+display:grid;
+
+grid-template-columns:1.2fr .8fr;
+
+gap:45px;
+
+align-items:center;
+
+}
+
+.hero h1{
+
+font-family:Orbitron,sans-serif;
+
+font-size:56px;
+
+line-height:1.1;
+
+margin-bottom:20px;
+
+}
+
+.hero h1 span{
+
+color:var(--cyan);
+
+text-shadow:
+
+0 0 18px var(--cyan);
+
+}
+
+.hero p{
+
+color:var(--muted);
+
+font-size:18px;
+
+line-height:1.8;
+
+margin-bottom:35px;
+
+}
+
+/* BUTTONS */
+
+.actions{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+padding:18px 34px;
+
+border-radius:14px;
+
+border:none;
+
+cursor:pointer;
+
+font-family:Orbitron,sans-serif;
+
+font-size:15px;
+
+letter-spacing:1px;
+
+transition:.35s;
+
+}
+
+.primary{
+
+background:linear-gradient(135deg,var(--cyan),#4de8ff);
+
+color:#00131b;
+
+box-shadow:
+
+0 0 20px rgba(0,247,255,.5);
+
+}
+
+.secondary{
+
+background:linear-gradient(135deg,var(--purple),var(--pink));
+
+color:white;
+
+box-shadow:
+
+0 0 18px rgba(255,46,136,.35);
+
+}
+
+.btn:hover{
+
+transform:scale(1.08);
+
+filter:brightness(1.12);
+
+box-shadow:
+
+0 0 18px white,
+
+0 0 30px var(--cyan),
+
+0 0 60px var(--purple);
+
+}
+
+/* STATUS PANEL */
+
+.panel{
+
+background:var(--glass);
+
+padding:28px;
+
+border-radius:22px;
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.panel h2{
+
+font-family:Orbitron;
+
+margin-bottom:25px;
+
+color:var(--cyan);
+
+}
+
+.stat{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* MENU CARDS */
+
+.section-title{
+
+margin:60px 0 28px;
+
+font-family:Orbitron;
+
+font-size:28px;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:24px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.05);
+
+padding:28px;
+
+border-radius:22px;
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.35s;
+
+cursor:pointer;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+left:-100%;
+
+top:0;
+
+height:100%;
+
+width:100%;
+
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+
+transition:.7s;
+
+}
+
+.card:hover::before{
+
+left:100%;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px) scale(1.02);
+
+border-color:var(--cyan);
+
+box-shadow:
+
+0 0 25px rgba(0,247,255,.45),
+
+0 0 50px rgba(138,46,255,.28);
+
+}
+
+.card h3{
+
+font-family:Orbitron;
+
+margin-bottom:12px;
+
+color:var(--cyan);
+
+}
+
+.card p{
+
+color:var(--muted);
+
+line-height:1.7;
+
+}
+
+/* FOOTER */
+
+footer{
+
+margin:70px 0 30px;
+
+text-align:center;
+
+color:#95a1b8;
+
+font-size:14px;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+header{
+
+padding:24px;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">CYBERCORE</div>
+
+<nav>
+
+<a href="#">HOME</a>
+<a href="#">MISSIONS</a>
+<a href="#">PROFILE</a>
+<a href="#">SETTINGS</a>
+
+</nav>
+
+</header>
+
+<div class="game-arena">
+
+<div class="hero">
+
+<div>
+
+<h1>WELCOME TO <span>CYBERCORE</span></h1>
+
+<p>
+A futuristic dashboard inspired by premium AAA game menus. Featuring glowing neon effects,
+glassmorphism, animated UI elements, and responsive layouts designed for a sleek gaming experience.
+</p>
+
+<div class="actions">
+
+<button class="btn primary">▶ START</button>
+
+<button class="btn secondary">⚙ SETTINGS</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>PLAYER STATUS</h2>
+
+<div class="stat">
+<span>Rank</span>
+<strong>Elite</strong>
+</div>
+
+<div class="stat">
+<span>Experience</span>
+<strong>98%</strong>
+</div>
+
+<div class="stat">
+<span>Energy</span>
+<strong>100%</strong>
+</div>
+
+<div class="stat">
+<span>Achievements</span>
+<strong>247</strong>
+</div>
+
+</div>
+
+</div>
+
+<h2 class="section-title">MISSION SELECT</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Campaign</h3>
+
+<p>
+Begin the main storyline and unlock futuristic missions across the digital universe.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Multiplayer</h3>
+
+<p>
+Challenge players worldwide with fast-paced competitive gameplay and ranked matches.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Customization</h3>
+
+<p>
+Upgrade your profile, equipment, interface theme, and exclusive cosmetic items.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Leaderboards</h3>
+
+<p>
+Track global rankings, seasonal rewards, and performance statistics in real time.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 CYBERCORE Interface • Futuristic Gaming UI Demo
+
+</footer>
+
+</div>
+
+</body>
+</html>
