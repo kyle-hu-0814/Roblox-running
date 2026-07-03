@@ -1,615 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CyberCore // Game Menu</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-
-    --bg:#070912;
-    --bg2:#111827;
-
-    --cyan:#00f7ff;
-    --purple:#8a2eff;
-    --pink:#ff2e88;
-
-    --glass:rgba(255,255,255,.06);
-
-    --text:#ffffff;
-    --muted:#b8c2d0;
-
-}
-
-body{
-
-    font-family:Inter,sans-serif;
-    color:var(--text);
-
-    background:
-    radial-gradient(circle at top left,#162544 0%,transparent 40%),
-    radial-gradient(circle at bottom right,#2b004b 0%,transparent 45%),
-    linear-gradient(140deg,var(--bg),#05060d);
-
-    min-height:100vh;
-    overflow-x:hidden;
-}
-
-/* Animated background */
-
-body::before{
-
-content:"";
-position:fixed;
-inset:0;
-
-background:
-linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-
-background-size:45px 45px;
-
-opacity:.35;
-
-animation:gridMove 25s linear infinite;
-
-pointer-events:none;
-
-}
-
-@keyframes gridMove{
-
-0%{transform:translateY(0);}
-100%{transform:translateY(45px);}
-
-}
-
-/* HEADER */
-
-header{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:28px 60px;
-
-}
-
-.logo{
-
-font-family:Orbitron,sans-serif;
-font-size:34px;
-font-weight:800;
-
-letter-spacing:3px;
-
-color:var(--cyan);
-
-text-shadow:
-0 0 10px var(--cyan),
-0 0 25px var(--cyan);
-
-}
-
-nav{
-
-display:flex;
-gap:20px;
-
-}
-
-nav a{
-
-text-decoration:none;
-color:white;
-
-padding:12px 22px;
-
-border:1px solid rgba(255,255,255,.1);
-
-border-radius:12px;
-
-transition:.35s;
-
-}
-
-nav a:hover{
-
-background:rgba(0,247,255,.15);
-
-border-color:var(--cyan);
-
-box-shadow:
-0 0 20px rgba(0,247,255,.4);
-
-transform:translateY(-3px);
-
-}
-
-/* MAIN CONTAINER */
-
-.game-arena{
-
-width:min(1180px,92%);
-
-margin:40px auto;
-
-padding:45px;
-
-border-radius:28px;
-
-background:rgba(10,14,28,.72);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:
-
-0 0 20px rgba(0,247,255,.45),
-
-0 0 50px rgba(138,46,255,.45),
-
-0 0 90px rgba(138,46,255,.25),
-
-inset 0 0 18px rgba(255,255,255,.05);
-
-animation:pulseGlow 3.5s ease-in-out infinite;
-
-}
-
-@keyframes pulseGlow{
-
-50%{
-
-box-shadow:
-
-0 0 35px rgba(0,247,255,.75),
-
-0 0 70px rgba(138,46,255,.65),
-
-0 0 120px rgba(255,46,136,.3),
-
-inset 0 0 18px rgba(255,255,255,.08);
-
-}
-
-}
-
-/* HERO */
-
-.hero{
-
-display:grid;
-
-grid-template-columns:1.2fr .8fr;
-
-gap:45px;
-
-align-items:center;
-
-}
-
-.hero h1{
-
-font-family:Orbitron,sans-serif;
-
-font-size:56px;
-
-line-height:1.1;
-
-margin-bottom:20px;
-
-}
-
-.hero h1 span{
-
-color:var(--cyan);
-
-text-shadow:
-
-0 0 18px var(--cyan);
-
-}
-
-.hero p{
-
-color:var(--muted);
-
-font-size:18px;
-
-line-height:1.8;
-
-margin-bottom:35px;
-
-}
-
-/* BUTTONS */
-
-.actions{
-
-display:flex;
-
-gap:18px;
-
-flex-wrap:wrap;
-
-}
-
-.btn{
-
-padding:18px 34px;
-
-border-radius:14px;
-
-border:none;
-
-cursor:pointer;
-
-font-family:Orbitron,sans-serif;
-
-font-size:15px;
-
-letter-spacing:1px;
-
-transition:.35s;
-
-}
-
-.primary{
-
-background:linear-gradient(135deg,var(--cyan),#4de8ff);
-
-color:#00131b;
-
-box-shadow:
-
-0 0 20px rgba(0,247,255,.5);
-
-}
-
-.secondary{
-
-background:linear-gradient(135deg,var(--purple),var(--pink));
-
-color:white;
-
-box-shadow:
-
-0 0 18px rgba(255,46,136,.35);
-
-}
-
-.btn:hover{
-
-transform:scale(1.08);
-
-filter:brightness(1.12);
-
-box-shadow:
-
-0 0 18px white,
-
-0 0 30px var(--cyan),
-
-0 0 60px var(--purple);
-
-}
-
-/* STATUS PANEL */
-
-.panel{
-
-background:var(--glass);
-
-padding:28px;
-
-border-radius:22px;
-
-border:1px solid rgba(255,255,255,.08);
-
-}
-
-.panel h2{
-
-font-family:Orbitron;
-
-margin-bottom:25px;
-
-color:var(--cyan);
-
-}
-
-.stat{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:14px 0;
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-/* MENU CARDS */
-
-.section-title{
-
-margin:60px 0 28px;
-
-font-family:Orbitron;
-
-font-size:28px;
-
-}
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:24px;
-
-}
-
-.card{
-
-background:rgba(255,255,255,.05);
-
-padding:28px;
-
-border-radius:22px;
-
-border:1px solid rgba(255,255,255,.08);
-
-transition:.35s;
-
-cursor:pointer;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-left:-100%;
-
-top:0;
-
-height:100%;
-
-width:100%;
-
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-
-transition:.7s;
-
-}
-
-.card:hover::before{
-
-left:100%;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px) scale(1.02);
-
-border-color:var(--cyan);
-
-box-shadow:
-
-0 0 25px rgba(0,247,255,.45),
-
-0 0 50px rgba(138,46,255,.28);
-
-}
-
-.card h3{
-
-font-family:Orbitron;
-
-margin-bottom:12px;
-
-color:var(--cyan);
-
-}
-
-.card p{
-
-color:var(--muted);
-
-line-height:1.7;
-
-}
-
-/* FOOTER */
-
-footer{
-
-margin:70px 0 30px;
-
-text-align:center;
-
-color:#95a1b8;
-
-font-size:14px;
-
-}
-
-/* Responsive */
-
-@media(max-width:900px){
-
-.hero{
-
-grid-template-columns:1fr;
-
-}
-
-.hero h1{
-
-font-size:42px;
-
-}
-
-header{
-
-padding:24px;
-
-flex-direction:column;
-
-gap:20px;
-
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Web Obby</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+        /* Roblox-style Leaderboard UI */
+        #leaderboard {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 150px;
+            border: 2px solid #555;
+        }
+        #leaderboard h3 { margin: 0 0 10px 0; font-size: 16px; text-align: center; border-bottom: 1px solid #777; padding-bottom: 5px;}
+        .stat { display: flex; justify-content: space-between; margin: 5px 0; font-size: 14px; }
+        
+        /* Controls Overlay */
+        #controls-ui {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 13px;
+            pointer-events: none;
+        }
+    </style>
+    <!-- Include Three.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-<header>
+    <!-- UI Elements -->
+    <div id="leaderboard">
+        <h3>Leaderstats</h3>
+        <div class="stat"><span>Wins:</span><span id="wins-val">0</span></div>
+        <div class="stat"><span>Deaths:</span><span id="deaths-val">0</span></div>
+    </div>
 
-<div class="logo">CYBERCORE</div>
+    <div id="controls-ui">
+        <strong>Controls:</strong><br>
+        Move: WASD / Arrow Keys<br>
+        Jump: Spacebar<br>
+        Camera: Move Mouse
+    </div>
 
-<nav>
+    <script>
+        // --- 1. SETUP THREE.JS SCENE & CAMERA ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x87CEEB); // Sky Blue
 
-<a href="#">HOME</a>
-<a href="#">MISSIONS</a>
-<a href="#">PROFILE</a>
-<a href="#">SETTINGS</a>
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-</nav>
+        // --- 2. LIGHTING ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(20, 40, 20);
+        scene.add(dirLight);
 
-</header>
+        // --- 3. GAME STATE & LEADERBOARD ---
+        const stats = { wins: 0, deaths: 0 };
+        function updateUI() {
+            document.getElementById('wins-val').innerText = stats.wins;
+            document.getElementById('deaths-val').innerText = stats.deaths;
+        }
 
-<div class="game-arena">
+        // --- 4. CREATE PLAYER ---
+        const playerGeometry = new THREE.BoxGeometry(1, 2, 1); // Roblox-like blocky character
+        const playerMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+        const player = new THREE.Mesh(playerGeometry, playerMaterial);
+        scene.add(player);
 
-<div class="hero">
+        // Physics variables
+        const spawnPoint = new THREE.Vector3(0, 2, 0);
+        player.position.copy(spawnPoint);
+        
+        let velocity = new THREE.Vector3();
+        let isGrounded = false;
+        const speed = 0.12;
+        const gravity = 0.009;
+        const jumpForce = 0.22;
 
-<div>
+        // --- 5. CREATE OBBY WORLD ---
+        const collidableObjects = [];
+        const killBricks = [];
+        const winBricks = [];
 
-<h1>WELCOME TO <span>CYBERCORE</span></h1>
+        function createPart(width, height, depth, x, y, z, color, type) {
+            const geo = new THREE.BoxGeometry(width, height, depth);
+            const mat = new THREE.MeshLambertMaterial({ color: color });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.set(x, y, z);
+            scene.add(mesh);
 
-<p>
-A futuristic dashboard inspired by premium AAA game menus. Featuring glowing neon effects,
-glassmorphism, animated UI elements, and responsive layouts designed for a sleek gaming experience.
-</p>
+            // Bounds box for basic AABB collision tracking
+            mesh.geometry.computeBoundingBox();
+            
+            if (type === "kill") killBricks.push(mesh);
+            else if (type === "win") winBricks.push(mesh);
+            else collidableObjects.push(mesh);
+        }
 
-<div class="actions">
+        // Spawn Platform
+        createPart(10, 1, 10, 0, 0, 0, 0x808080, "normal");
+        // Jump Obstacles
+        createPart(3, 0.5, 3, 0, 0.5, -10, 0x0000ff, "normal");
+        createPart(3, 0.5, 3, 5, 1.5, -18, 0x0000ff, "normal");
+        createPart(3, 0.5, 3, -4, 2.5, -26, 0x0000ff, "normal");
+        // Lava Floor (Kill Zone)
+        createPart(100, 1, 100, 0, -5, -20, 0xff0000, "kill");
+        // Win Zone
+        createPart(8, 1, 8, 0, 3.5, -38, 0xffd700, "win");
 
-<button class="btn primary">▶ START</button>
+        // --- 6. CONTROLS ---
+        const keys = { w: false, a: false, s: false, d: false, Space: false };
+        window.addEventListener('keydown', (e) => { if(keys[e.code] !== undefined) keys[e.code] = true; });
+        window.addEventListener('keyup', (e) => { if(keys[e.code] !== undefined) keys[e.code] = false; });
 
-<button class="btn secondary">⚙ SETTINGS</button>
+        // Simple Mouse Camera Rotation
+        let mouseX = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        });
 
-</div>
+        // --- 7. GAME LOOP & PHYSICS ---
+        function resetPlayer() {
+            player.position.copy(spawnPoint);
+            velocity.set(0, 0, 0);
+        }
 
-</div>
+        function checkCollision(mesh) {
+            const pBounds = new THREE.Box3().setFromObject(player);
+            const mBounds = new THREE.Box3().setFromObject(mesh);
+            return pBounds.intersectsBox(mBounds);
+        }
 
-<div class="panel">
+        function animate() {
+            requestAnimationFrame(animate);
 
-<h2>PLAYER STATUS</h2>
+            // Movement Physics
+            if (keys.KeyW || keys.ArrowUp) player.position.z -= speed;
+            if (keys.KeyS || keys.ArrowDown) player.position.z += speed;
+            if (keys.KeyA || keys.ArrowLeft) player.position.x -= speed;
+            if (keys.KeyD || keys.ArrowRight) player.position.x += speed;
 
-<div class="stat">
-<span>Rank</span>
-<strong>Elite</strong>
-</div>
+            // Gravity applications
+            velocity.y -= gravity;
+            player.position.y += velocity.y;
+            isGrounded = false;
 
-<div class="stat">
-<span>Experience</span>
-<strong>98%</strong>
-</div>
+            // Platform Collisions (Standing on blocks)
+            collidableObjects.forEach(platform => {
+                if (checkCollision(platform)) {
+                    // Check if falling down onto platform
+                    if (velocity.y <= 0 && player.position.y > platform.position.y) {
+                        player.position.y = platform.position.y + (platform.geometry.parameters.height/2) + 1;
+                        velocity.y = 0;
+                        isGrounded = true;
+                    }
+                }
+            });
 
-<div class="stat">
-<span>Energy</span>
-<strong>100%</strong>
-</div>
+            // Jump Action
+            if (keys.Space && isGrounded) {
+                velocity.y = jumpForce;
+                isGrounded = false;
+            }
 
-<div class="stat">
-<span>Achievements</span>
-<strong>247</strong>
-</div>
+            // Lava/Kill Brick Check
+            killBricks.forEach(lava => {
+                if (checkCollision(lava)) {
+                    stats.deaths++;
+                    updateUI();
+                    resetPlayer();
+                }
+            });
 
-</div>
+            // Win Goal Check
+            winBricks.forEach(goal => {
+                if (checkCollision(goal)) {
+                    stats.wins++;
+                    updateUI();
+                    resetPlayer();
+                }
+            });
 
-</div>
+            // Fallback Killplane (If you fall off completely)
+            if (player.position.y < -15) {
+                stats.deaths++;
+                updateUI();
+                resetPlayer();
+            }
 
-<h2 class="section-title">MISSION SELECT</h2>
+            // Camera follow smoothly behind player
+            camera.position.x = player.position.x + (mouseX * 5);
+            camera.position.y = player.position.y + 6;
+            camera.position.z = player.position.z + 12;
+            camera.lookAt(player.position);
 
-<div class="cards">
+            renderer.render(scene, camera);
+        }
 
-<div class="card">
+        // Handle Window Resizing
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
-<h3>Campaign</h3>
-
-<p>
-Begin the main storyline and unlock futuristic missions across the digital universe.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Multiplayer</h3>
-
-<p>
-Challenge players worldwide with fast-paced competitive gameplay and ranked matches.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Customization</h3>
-
-<p>
-Upgrade your profile, equipment, interface theme, and exclusive cosmetic items.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Leaderboards</h3>
-
-<p>
-Track global rankings, seasonal rewards, and performance statistics in real time.
-</p>
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 CYBERCORE Interface • Futuristic Gaming UI Demo
-
-</footer>
-
-</div>
-
+        // Run the game loop
+        animate();
+    </script>
 </body>
 </html>
